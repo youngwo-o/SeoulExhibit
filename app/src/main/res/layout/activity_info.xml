@@ -9,6 +9,20 @@
         android:orientation="vertical"
         android:background="#ffffff">
 
+    <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            android:theme="?attr/actionBarTheme"
+            android:minHeight="?attr/actionBarSize" android:id="@+id/info_toolbar">
+        <Button
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="right"
+                android:id="@+id/fav"
+        />
+    </android.support.v7.widget.Toolbar>
+
     <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">
         <ScrollView android:layout_width="match_parent" android:layout_height="match_parent">
 
@@ -17,124 +31,123 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/edge_bottom">
-                <android.support.v7.widget.Toolbar
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="?attr/colorPrimary"
-                        android:theme="?attr/actionBarTheme"
-                        android:minHeight="?attr/actionBarSize" android:id="@+id/toolbar"/>
 
                 <HorizontalScrollView android:layout_width="match_parent"
-                                      android:layout_height="200dp">
+                                      android:layout_height="150dp"
+                                      android:scrollbars="none">
 
                     <LinearLayout
                             android:orientation="horizontal"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
                         <ImageView
-                                android:layout_width="100dp"
-                                android:layout_height="match_parent" app:srcCompat="@mipmap/ic_launcher"
+                                android:layout_width="150dp"
+                                android:layout_height="match_parent" android:src="@mipmap/ic_launcher"
+                                android:layout_marginRight="2dp"
                                 android:id="@+id/imageView11" android:layout_weight="1"/>
                         <ImageView
-                                android:layout_width="100dp"
+                                android:layout_width="150dp"
                                 android:layout_height="match_parent"
-                                app:srcCompat="@mipmap/ic_launcher" android:id="@+id/imageView10"
+                                android:layout_marginRight="2dp"
+                                android:src="@mipmap/ic_launcher" android:id="@+id/imageView10"
                                 android:layout_weight="1"/>
                         <ImageView
-                                android:layout_width="100dp"
-                                android:layout_height="match_parent" app:srcCompat="@mipmap/ic_launcher"
+                                android:layout_width="150dp"
+                                android:layout_height="match_parent" android:src="@mipmap/ic_launcher"
+                                android:layout_marginRight="2dp"
                                 android:id="@+id/imageView9" android:layout_weight="1"/>
                         <ImageView
-                                android:layout_width="100dp"
+                                android:layout_width="150dp"
                                 android:layout_height="match_parent"
-                                app:srcCompat="@mipmap/ic_launcher" android:id="@+id/imageView12"
+                                android:src="@mipmap/ic_launcher" android:id="@+id/imageView12"
                                 android:layout_weight="1"/>
                     </LinearLayout>
                 </HorizontalScrollView>
 
                 <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="80dp"
+                        android:layout_height="90dp"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp"
                         android:weightSum="10"
                         android:background="#ffffff">
-
                     <LinearLayout
                             android:orientation="vertical"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="6.5"
-                            android:paddingLeft="20dp"
-                            android:paddingTop="14dp">
+                            android:layout_marginTop="15dp">
                         <TextView
                                 android:layout_width="wrap_content" android:layout_height="wrap_content"
                                 android:id="@+id/exhibitname"
                                 android:textStyle="bold"
-                                android:textSize="18sp"
-                                android:text="아드만 애니메이션전(예시)"/>
+                                android:textSize="18sp"/>
 
                         <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
                             <TextView
                                     android:text="장소 : "
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:textSize="10sp"
+                                    android:textSize="13sp"
                                     android:layout_weight="1"/>
                             <TextView
-                                    android:text="배움터 디자인전시관(예시)"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content" android:id="@+id/exhibitplace"
-                                    android:textSize="10sp"
+                                    android:textSize="13sp"
                                     android:layout_weight="1"/>
                         </LinearLayout>
                     </LinearLayout>
-
                     <LinearLayout
-                            android:layout_marginTop="10dp"
-                            android:layout_marginRight="8dp"
+                            android:orientation="horizontal"
                             android:layout_width="0dp"
-                            android:layout_height="match_parent" android:layout_weight="6.5">
+                            android:layout_height="match_parent" android:layout_weight="3.5">
 
                         <LinearLayout
                                 android:orientation="vertical"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:layout_width="50dp"
+                                android:layout_height="match_parent"
                                 android:layout_marginRight="2dp"
                                 android:gravity="center">
-                            <ImageView
-                                    android:layout_width="50dp" android:layout_height="50dp"
-                                    android:src="@mipmap/ic_launcher"/>
+                            <Button
+                                    android:layout_width="match_parent"
+                                    android:layout_height="50dp" android:id="@+id/showmap"/>
                             <TextView
-                                    android:layout_width="wrap_content" android:layout_height="wrap_content"
                                     android:text="지도보기"
-                                    android:textSize="13sp"/>
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content" android:id="@+id/textView3"
+                                    android:textSize="12dp"/>
                         </LinearLayout>
-
                         <LinearLayout
                                 android:orientation="vertical"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:layout_width="50dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="2dp"
                                 android:gravity="center">
-                            <ImageView
-                                    android:layout_width="50dp" android:layout_height="50dp"
-                                    android:src="@mipmap/ic_launcher"/>
+                            <Button
+                                    android:layout_width="match_parent"
+                                    android:layout_height="50dp" android:id="@+id/button8"/>
                             <TextView
-                                    android:layout_width="wrap_content" android:layout_height="wrap_content"
                                     android:text="리뷰쓰기"
-                                    android:textSize="13sp"/>
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content" android:id="@+id/textView4"
+                                    android:textSize="12dp"/>
                         </LinearLayout>
-
                     </LinearLayout>
                 </LinearLayout>
 
                 <RelativeLayout android:layout_width="match_parent"
-                                android:layout_height="150dp"
-                                android:background="@drawable/edge_top_bottom">
+                                android:layout_height="200dp"
+                                android:background="@drawable/edge_top_bottom_bold"
+                                android:paddingTop="8dp"
+                                android:paddingBottom="8dp"
+                                android:paddingLeft="20dp"
+                                android:paddingRight="20dp">
                     <LinearLayout
                             android:orientation="vertical"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginLeft="20dp"
-                            android:layout_marginRight="20dp">
+                            android:layout_height="match_parent">
                         <TextView
                                 android:layout_width="wrap_content" android:layout_height="wrap_content"
                                 android:text="전시회 정보"
@@ -150,11 +163,16 @@
                                     android:layout_width="wrap_content" android:layout_height="wrap_content"
                                     android:text="기간"
                                     android:textSize="15sp"/>
-                            <View android:layout_width="0dp" android:layout_height="0dp"
-                                  android:layout_weight="1"/>
+
+                            <View
+                                    android:layout_width="0dp"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="1"/>
+
                             <TextView
-                                    android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                    android:text="2018.7.12 ~ 2018.9.12"/>
+                                    android:id="@+id/exhibitdate"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"/>
                         </LinearLayout>
                         <LinearLayout
                                 android:layout_width="match_parent"
@@ -166,36 +184,74 @@
                                     android:textSize="15sp"/>
                             <View android:layout_width="0dp" android:layout_height="0dp"
                                   android:layout_weight="1"/>
+
                             <TextView
-                                    android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                    android:text="월요일~일요일 10:00-21:00(※입장마감 20:00)"/>
+                                    android:id="@+id/exhibittime"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                            <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="요금"
+                                    android:textSize="15sp"/>
+
+                            <View
+                                    android:layout_width="0dp"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="1"/>
+
+                            <TextView
+                                    android:id="@+id/exhibitfee"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"/>
                         </LinearLayout>
                         <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal">
+
                             <TextView
-                                    android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                    android:text="요금"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="연령"
                                     android:textSize="15sp"/>
-                            <View android:layout_width="0dp" android:layout_height="0dp"
-                                  android:layout_weight="1"/>
+
+                            <View
+                                    android:layout_width="0dp"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="1"/>
+
                             <TextView
-                                    android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                    android:text="성인 15,000원
- 청소년 12,000원
- 어린이 9,000원"/>
+                                    android:id="@+id/exhibittrgt"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"/>
                         </LinearLayout>
-                        <ImageView
-                                android:layout_width="200dp"
-                                android:layout_height="25dp" app:srcCompat="@mipmap/ic_launcher"
-                                android:id="@+id/imageView2"
+                        <Button
+                                android:layout_width="100dp"
+                                android:layout_height="30dp" android:src="@mipmap/ic_launcher"
+                                android:id="@+id/link"
                                 android:layout_marginTop="8dp"
                                 android:layout_marginBottom="8dp"
                                 android:layout_gravity="end"/>
 
                     </LinearLayout>
                 </RelativeLayout>
+
+                <Button
+                        android:text="전화하기"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:id="@+id/button9"/>
+                <TextView
+                        android:text="리뷰가 보여질 곳"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp" android:id="@+id/textView"/>
 
             </LinearLayout>
         </ScrollView>

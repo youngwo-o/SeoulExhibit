@@ -15,8 +15,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
-
-import org.w3c.dom.Text;
+import com.example.youngwookwon.myproject.Info.InfoActivity;
 
 import java.util.List;
 
