@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="50dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingLeft="50dp">
+
+            <TextView
+                android:id="@+id/textView_Email"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="10"
+                android:text="E-mail" />
+
+            <EditText
+                android:id="@+id/edit_regEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint="enter you E-Mail" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:paddingLeft="50dp">
+
+            <TextView
+                android:id="@+id/textView_pw"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="10"
+                android:text="PW" />
+
+            <EditText
+                android:id="@+id/edit_regPW"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint="enter your Password" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/button_register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="Register"
+            android:onClick="Register"/>
+
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

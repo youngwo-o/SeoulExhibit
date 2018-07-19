@@ -169,4 +169,9 @@ public class MainActivity extends AppCompatActivity {
         TextView textview = (TextView)findViewById(R.id.main_text);
         textview.setText(Text);
     }
+
+    public void click_Profile(View view) {
+        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+        startActivity(intent);
+    }
 }
