@@ -10,7 +10,7 @@ import android.widget.Toast;
 import com.facebook.login.LoginManager;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class AfterLogin extends AppCompatActivity {
+public class Home extends AppCompatActivity {
     private FirebaseAuth mAuth;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -21,8 +21,8 @@ public class AfterLogin extends AppCompatActivity {
     public void click_signout(View view) {
             FirebaseAuth.getInstance().signOut();
             LoginManager.getInstance().logOut();
-            //Intent intent = new Intent(AfterLogin.this, LoginActivity.class);
-            //startActivity(intent);
-            Toast.makeText(AfterLogin.this, "Signed Out Successfully! ", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(Home.this, LoginActivity.class);
+            startActivity(intent);
+            Toast.makeText(Home.this, "Signed Out Successfully! ", Toast.LENGTH_SHORT).show();
     }
 }
