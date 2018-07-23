@@ -1,4 +1,4 @@
-package com.example.youngwookwon.myproject.Info;
+package com.example.youngwookwon.myproject;
 
 import android.app.FragmentManager;
 import android.content.Intent;

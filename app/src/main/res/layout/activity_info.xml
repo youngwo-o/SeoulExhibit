@@ -239,15 +239,18 @@
                                 android:id="@+id/link"
                                 android:layout_marginTop="8dp"
                                 android:layout_marginBottom="8dp"
-                                android:layout_gravity="end"/>
+                                android:layout_gravity="end"
+                                android:text="홈페이지"/>
 
                     </LinearLayout>
                 </RelativeLayout>
-
-                <Button
-                        android:text="전화하기"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" android:id="@+id/button9"/>
+                <RelativeLayout android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+                    <Button
+                            android:text="전화하기"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" android:id="@+id/button9"/>
+                </RelativeLayout>
                 <TextView
                         android:text="리뷰가 보여질 곳"
                         android:layout_width="match_parent"

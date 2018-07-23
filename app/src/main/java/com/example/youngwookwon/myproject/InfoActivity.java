@@ -1,4 +1,4 @@
-package com.example.youngwookwon.myproject.Info;
+package com.example.youngwookwon.myproject;
 
 import android.content.Intent;
 import android.location.Address;
@@ -15,8 +15,6 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import com.example.youngwookwon.myproject.Info.MapActivity;
-import com.example.youngwookwon.myproject.R;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
 

@@ -17,22 +17,23 @@
                 android:layout_height="60dp"
                 android:background="@drawable/toolbar_background"
                 android:minHeight="?attr/actionBarSize" android:id="@+id/toolbar"/>
+
         <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
             <ImageButton
-                android:id="@+id/button_profile"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/bottom_album"
-                android:onClick="click_Profile"/>
+                    android:id="@+id/button_profile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/bottom_album"
+                    android:onClick="click_Profile"/>
 
             <TextView
-                android:id="@+id/main_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true" />
+                    android:id="@+id/main_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true" />
         </RelativeLayout>
 
         <android.support.design.widget.TabLayout
