@@ -42,16 +42,16 @@ public class LoginActivity extends AppCompatActivity {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) { //user is signed in
                     Toast.makeText(LoginActivity.this, "Welcome! ", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    Intent intent = new Intent(LoginActivity.this, UserInfoActivity.class);
                     startActivity(intent);
                     // Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
-                } else { //user is signed out
+                }
+                /*else { //user is signed out
                     Toast.makeText(LoginActivity.this, "Signed out", Toast.LENGTH_SHORT).show();
                     // Log.d(TAG, "onAuthStateChanged:signed_out");
-                }
+                }*/
             }
         };
-
 
         AccessToken accessToken = AccessToken.getCurrentAccessToken();
         boolean isLoggedIn = accessToken != null && !accessToken.isExpired();
@@ -111,8 +111,7 @@ public class LoginActivity extends AppCompatActivity {
         //check if user is signed in(!null) and update UI accordingly
         FirebaseUser user = mAuth.getCurrentUser();
         if (user != null) { //user is signed in
-            Toast.makeText(LoginActivity.this, "Welcome,:OnStart:", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            Intent intent = new Intent(LoginActivity.this, UserInfoActivity.class);
             startActivity(intent);
         }
     }

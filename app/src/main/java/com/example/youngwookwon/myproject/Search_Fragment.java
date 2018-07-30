@@ -14,7 +14,7 @@ public class Search_Fragment extends Fragment{
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             View view = inflater.inflate(R.layout.fragment_search_, container, false);
-            ((MainActivity)getActivity()).changeText("전시회 검색");
+          //  ((MainActivity)getActivity()).changeText("전시회 검색");
             return view;
         }
 }

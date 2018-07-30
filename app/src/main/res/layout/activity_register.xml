@@ -12,6 +12,54 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:paddingLeft="50dp">
+
+            <TextView
+                android:id="@+id/textView_Name"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="10"
+                android:text="이름" />
+
+            <EditText
+                android:id="@+id/edit_Name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="이름 입력"
+                android:inputType="textPersonName" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:paddingLeft="50dp">
+
+            <TextView
+                android:id="@+id/textView_nickname"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="10"
+                android:text="닉네임" />
+
+            <EditText
+                android:id="@+id/edit_Nickname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="닉네임 입력"
+                android:inputType="" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:orientation="horizontal"
             android:paddingLeft="50dp">
 
@@ -20,7 +68,7 @@
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="10"
-                android:text="E-mail" />
+                android:text="이메일" />
 
             <EditText
                 android:id="@+id/edit_regEmail"
@@ -29,7 +77,7 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:hint="enter you E-Mail" />
+                android:hint="이메일 입력" />
 
         </LinearLayout>
 
@@ -45,7 +93,7 @@
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="10"
-                android:text="PW" />
+                android:text="비밀번호" />
 
             <EditText
                 android:id="@+id/edit_regPW"
@@ -53,8 +101,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:hint="enter your Password" />
+                android:inputType="textPassword"
+                android:hint="비밀번호 입력" />
         </LinearLayout>
 
         <Button
