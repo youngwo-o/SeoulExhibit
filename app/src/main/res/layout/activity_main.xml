@@ -12,29 +12,28 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <android.support.v7.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@drawable/toolbar_background"
+                android:minHeight="?attr/actionBarSize" android:id="@+id/toolbar"/>
 
         <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
             <ImageButton
-                android:id="@+id/left_button"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:onClick = "imgClick"/>
+                    android:id="@+id/button_profile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/bottom_album"
+                    android:onClick="imgClick"/>
 
-            <ImageButton
-                android:id="@+id/right_button"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_alignParentRight = "true"/>
-
-            <ImageView
-                android:id="@+id/toolbar_image"
-                android:layout_width="wrap_content"
-                android:layout_height="60dp"
-                android:layout_weight="1"
-                android:background="@drawable/above_image" />
+            <TextView
+                    android:id="@+id/main_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true" />
         </RelativeLayout>
 
         <android.support.design.widget.TabLayout
