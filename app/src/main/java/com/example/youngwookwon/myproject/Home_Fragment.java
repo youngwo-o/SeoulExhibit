@@ -31,7 +31,6 @@ public class Home_Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home_, container, false);
         StrictMode.enableDefaults();
-
         String code = null;
         String name = null;
         String start = null;
@@ -45,7 +44,7 @@ public class Home_Fragment extends Fragment {
         boolean inend = false;
         boolean inplace = false;
         boolean inimage = false;
-        ((MainActivity)getActivity()).changeText("이달의 전시");
+   //     ((MainActivity)getActivity()).changeText("이달의 전시");
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recyclerview2);
         mLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setHasFixedSize(true);
@@ -53,10 +52,10 @@ public class Home_Fragment extends Fragment {
         recyclerView.setAdapter(mAdapter);
 
         List<Home_View_Item> items = new ArrayList<>();
-        Home_View_Item[] item = new Home_View_Item[7];
+        Home_View_Item[] item = new Home_View_Item[20];
         int i = 0;
         try {
-            URL url = new URL("http://openapi.seoul.go.kr:8088/46674359456869733835786b594d64/xml/SearchPerformanceBySubjectService/1/7/7/");
+            URL url = new URL("http://openapi.seoul.go.kr:8088/46674359456869733835786b594d64/xml/SearchPerformanceBySubjectService/1/20/7/");
             XmlPullParserFactory parserCreator = XmlPullParserFactory.newInstance();
             XmlPullParser parser = parserCreator.newPullParser();
             parser.setInput(url.openStream(), null);
@@ -130,7 +129,7 @@ public class Home_Fragment extends Fragment {
         } catch (Exception e) {
 
         }
-        for (int j = 0; j < 7; j++) items.add(item[j]);
+        for (int j = 0; j < 20; j++) items.add(item[j]);
         recyclerView.setAdapter(new Home_View_Adapter(getActivity(),items,R.layout.fragment_home_));
         return view;
     }

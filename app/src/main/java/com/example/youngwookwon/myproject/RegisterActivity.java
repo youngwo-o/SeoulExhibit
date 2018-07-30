@@ -1,5 +1,6 @@
 package com.example.youngwookwon.myproject;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -12,13 +13,21 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class RegisterActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
+    private EditText edit_Name;
+    private EditText edit_Nickname;
     private EditText edit_Email;
     private EditText edit_PW;
+    private String Name;
+    private String Nickname;
     private String Email;
     private String PW;
+    private DatabaseReference mDatabase;
+    private UserInfo user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,10 +43,12 @@ public class RegisterActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (!task.isSuccessful()) {
-                            Toast.makeText(RegisterActivity.this, "Signed Failed", Toast.LENGTH_SHORT).show();
+                            //TEMP))DEBUG
+                            Toast.makeText(RegisterActivity.this, "Registration Failed", Toast.LENGTH_SHORT).show();
                         }
                         else {
-                            Toast.makeText(RegisterActivity.this, "SignIn Success", Toast.LENGTH_SHORT).show();
+                            //TEMP))DEBUG
+                            Toast.makeText(RegisterActivity.this, "가입되었습니다", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -46,14 +57,23 @@ public class RegisterActivity extends AppCompatActivity {
                 Toast.makeText(this, "your E-Mail is not VALID.", Toast.LENGTH_SHORT).show();
             }
         }
+        user = new UserInfo(Name, Nickname, Email, PW);
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase.child("user").child(user.getnickname()).setValue(user);
+        Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+        startActivity(intent);
     }
     private boolean isEmptyEditText() {
+        edit_Name = findViewById(R.id.edit_Name);
+        edit_Nickname = findViewById(R.id.edit_Nickname);
         edit_Email = findViewById(R.id.edit_regEmail);
         edit_PW = findViewById(R.id.edit_regPW);
+        Name = edit_Name.getText().toString();
+        Nickname = edit_Nickname.getText().toString();
         Email = edit_Email.getText().toString();
         PW = edit_PW.getText().toString();
-        if(Email.matches("") || PW.matches("")) {
-            Toast.makeText(this, "Please Fill in E-mail and Password Completely", Toast.LENGTH_SHORT).show();
+        if(Name.matches("") || Email.matches("") || PW.matches("") || Nickname.matches("")) {
+            Toast.makeText(this, "모든 칸을 채워주세요", Toast.LENGTH_SHORT).show();
             return true;
         }
         return false;

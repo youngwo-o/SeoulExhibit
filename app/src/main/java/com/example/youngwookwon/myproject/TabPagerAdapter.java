@@ -25,10 +25,10 @@ public class TabPagerAdapter extends FragmentStatePagerAdapter {
                 Home_Fragment tabFragment1 = new Home_Fragment();
                 return tabFragment1;
             case 1:
-                Search_Fragment tabFragment2 = new Search_Fragment();
+                Review_Fragment tabFragment2 = new Review_Fragment();
                 return tabFragment2;
             case 2:
-                SNS_Fragment tabFragment3 = new SNS_Fragment();
+                MyGood_Fragment tabFragment3 = new MyGood_Fragment();
                 return tabFragment3;
             default:
                 return null;

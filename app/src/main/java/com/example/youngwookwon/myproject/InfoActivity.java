@@ -185,7 +185,6 @@ public class InfoActivity extends AppCompatActivity  {
         }
         return super.onOptionsItemSelected(item);
     }
-
     @OnClick(R.id.fav) //fav button click
     public void favEvent() {
 
@@ -198,7 +197,7 @@ public class InfoActivity extends AppCompatActivity  {
         double latitude = addr.getLatitude();
         double longitude = addr.getLongitude();
 
-        Intent intent = new Intent(getApplicationContext(), MapActivity.class);
+        Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
         intent.putExtra("title", TITLE);
         intent.putExtra("place", PLACE);
         intent.putExtra("latitude", latitude);

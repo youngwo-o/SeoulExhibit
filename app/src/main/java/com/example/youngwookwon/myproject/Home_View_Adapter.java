@@ -3,6 +3,8 @@ package com.example.youngwookwon.myproject;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Build;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -41,10 +43,14 @@ public class Home_View_Adapter extends RecyclerView.Adapter<Home_View_Adapter.Vi
     public void onBindViewHolder(ViewHolder holder, int position) {
         final Home_View_Item item=items.get(position);
         String adr = item.getImage();
-        Glide.with(context).load(adr).apply(new RequestOptions().placeholder(R.mipmap.ic_launcher).centerCrop()).into(holder.image);
+        Glide.with(context).load(adr).into(holder.image);
+     //   Glide.with(context).load(adr).apply(new RequestOptions().placeholder(R.mipmap.ic_launcher).centerCrop()).into(holder.image);
         holder.title.setText(item.getTitle());
+        holder.title.setTextColor(Color.BLACK);
         holder.date.setText(item.getDate());
+        holder.date.setTextColor(Color.BLACK);
         holder.place.setText(item.getPlace());
+        holder.place.setTextColor(Color.BLACK);
         holder.image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,6 +81,10 @@ public class Home_View_Adapter extends RecyclerView.Adapter<Home_View_Adapter.Vi
             place = (TextView)itemView.findViewById(R.id.place);
             date = (TextView)itemView.findViewById(R.id.date);
             cardview=(CardView)itemView.findViewById(R.id.cardview);
+            Typeface typeface = Typeface.createFromAsset(context.getAssets(), "font/seoulnamsanm.ttf");
+            title.setTypeface(typeface);
+            place.setTypeface(typeface);
+            date.setTypeface(typeface);
         }
     }
 }

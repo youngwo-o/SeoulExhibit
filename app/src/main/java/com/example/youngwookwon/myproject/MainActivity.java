@@ -2,6 +2,7 @@ package com.example.youngwookwon.myproject;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.design.widget.BottomNavigationView;
@@ -12,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Display;
 import android.view.View;
 import android.widget.TextView;
 
@@ -23,19 +25,17 @@ import org.xmlpull.v1.XmlPullParserFactory;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-
 public class MainActivity extends AppCompatActivity {
     private BottomNavigationView mBottomNavigation;
     Intent intent;
     private TabLayout tabLayout;
     private ViewPager viewPager;
-
+    private TextView textview;
+    DisplayInfo[] display;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
         StrictMode.enableDefaults();
         String code = null;
         String name = null;
@@ -51,18 +51,21 @@ public class MainActivity extends AppCompatActivity {
         boolean inplace = false;
         boolean inimage = false;
 
+        Typeface typeface = Typeface.createFromAsset(this.getAssets(), "font/seoulnamsanm.ttf");
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview1);
-        TextView textview = findViewById(R.id.main_text);
-        textview.setText("이달의 전시");
+     //   TextView textview = findViewById(R.id.main_text);
+//        textview.setTypeface(typeface);
+  //      textview.setText("이달의 전시");
         LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(layoutManager);
 
         List<Home_View_Item> items = new ArrayList<>();
-        Home_View_Item[] item = new Home_View_Item[7];
+        Home_View_Item[] item = new Home_View_Item[20];
+        display = new DisplayInfo[12];
         int i = 0;
         try {
-            URL url = new URL("http://openapi.seoul.go.kr:8088/46674359456869733835786b594d64/xml/SearchPerformanceBySubjectService/1/7/7/");
+            URL url = new URL("http://openapi.seoul.go.kr:8088/46674359456869733835786b594d64/xml/SearchPerformanceBySubjectService/1/20/7/");
             XmlPullParserFactory parserCreator = XmlPullParserFactory.newInstance();
             XmlPullParser parser = parserCreator.newPullParser();
             parser.setInput(url.openStream(), null);
@@ -125,6 +128,7 @@ public class MainActivity extends AppCompatActivity {
                     case XmlPullParser.END_TAG:
                         if (parser.getName().equals("row")) {
                             String tmp = "이름 : " + name + "\n기간 : " + start + "~" + end + "\n장소 : " + place + "";
+                            display[i] = new DisplayInfo(code, name, start, end, place, image);
                             item[i] = new Home_View_Item(image," "+name," "+start+" ~ "+end, " "+place, code);
                             i++;
                         }
@@ -134,9 +138,8 @@ public class MainActivity extends AppCompatActivity {
             }
         } catch (Exception e) {
         }
-        for (int j = 0; j < 7; j++) items.add(item[j]);
-        recyclerView.setAdapter(new Home_View_Adapter(getApplicationContext(),items,R.layout.activity_main));
-
+        for (int j = 0; j < 20; j++) items.add(item[j]);
+        recyclerView.setAdapter(new Home_View_Adapter(getApplicationContext(),items, R.layout.activity_main));
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_main);
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
@@ -155,6 +158,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
+       //         TextView textview = (TextView) findViewById(R.id.main_text);
+      //          if(tab.getPosition() == 0) textview.setText("이달의 전시");
+        //        else if(tab.getPosition() == 1) textview.setText("전시회 리뷰");
+          //      else if(tab.getPosition() == 2) textview.setText("좋아요 목록");
             }
 
             @Override
@@ -168,11 +175,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-    public void changeText(String Text)
+  /*  public void changeText(String Text)
     {
         TextView textview = (TextView)findViewById(R.id.main_text);
         textview.setText(Text);
-    }
+    }*/
 
     public void click_Profile(View view) {
         Intent intent = new Intent(MainActivity.this, LoginActivity.class);

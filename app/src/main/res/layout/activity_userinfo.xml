@@ -68,45 +68,36 @@
                         android:layout_height="match_parent"
                         android:orientation="vertical">
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:id="@+id/user_nikname"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="닉네임 : 인서인서" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:id="@+id/user_id"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="ID : naeun@naver.com" />
-                        </LinearLayout>
-
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="1">
 
                             <TextView
+                                android:id="@+id/edit_nickname"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="temp"
+                                android:textSize="30dp" />
+
+                            <TextView
                                 android:id="@+id/user_name"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="이름 : 황인서" />
+                                android:text="temp"
+                                android:textSize="15dp" />
+
+                            <TextView
+                                android:id="@+id/edit_email"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/user_name"
+                                android:layout_weight="1"
+                                android:text="temp@temp"
+                                android:textSize="15dp" />
+
                         </RelativeLayout>
 
                     </LinearLayout>
@@ -127,18 +118,12 @@
                 android:orientation="vertical">
 
                 <Button
-                    android:id="@+id/button3"
+                    android:id="@+id/button_modUserInfo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="프로필 이미지 변경"
-                    android:gravity="left"/>
-
-                <Button
-                    android:id="@+id/button2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="닉네임 변경"
-                    android:gravity="left"/>
+                    android:gravity="left"
+                    android:text="TEMP_회원정보수정하기"
+                    android:onClick="click_modUserInfo"/>
 
                 <Button
                     android:id="@+id/button_signout"

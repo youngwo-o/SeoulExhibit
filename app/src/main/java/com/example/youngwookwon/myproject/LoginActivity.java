@@ -111,7 +111,6 @@ public class LoginActivity extends AppCompatActivity {
         //check if user is signed in(!null) and update UI accordingly
         FirebaseUser user = mAuth.getCurrentUser();
         if (user != null) { //user is signed in
-            Toast.makeText(LoginActivity.this, "Welcome,:OnStart:", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(LoginActivity.this, UserInfoActivity.class);
             startActivity(intent);
         }
