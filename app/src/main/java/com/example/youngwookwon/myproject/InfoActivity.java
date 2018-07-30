@@ -26,15 +26,12 @@ public class InfoActivity extends AppCompatActivity  {
     String TITLE = null;
     String ORG_LINK=null;
     String PLACE = null;
-    String INQUIRY=null;
     List<Address> list = null;
 
     @BindView(R.id.link)
     Button link;
     @BindView(R.id.showmap)
     Button showmap;
-    @BindView(R.id.calling)
-    Button calling;
     @BindView(R.id.info_toolbar)
     Toolbar toolbar;
 
@@ -53,7 +50,7 @@ public class InfoActivity extends AppCompatActivity  {
 
     private void getData() {
         Intent intent = getIntent();
-        String TIME=null, DATE=null, STARTDATE=null, END_DATE=null, USE_TRGT=null, USE_FEE = null;
+        String TIME=null, DATE=null, STARTDATE=null, END_DATE=null, USE_TRGT=null, USE_FEE = null, INQUIRY=null;
         boolean intitle = false, intime = false, indate = false, instartdate = false,inend_date = false, inplace = false, inorg_link = false, inuse_trgt = false, inuse_fee = false, ininquiry = false;
         String str_url = "http://openapi.seoul.go.kr:8088/766b79726868697336354e79574b51/xml/SearchConcertDetailService/1/5/"+intent.getExtras().getString("cultcode");
 
@@ -207,15 +204,4 @@ public class InfoActivity extends AppCompatActivity  {
         intent.putExtra("longitude", longitude);
         startActivity(intent);
     }
-    @OnClick(R.id.calling)
-    public void callDirect() {
-        String tmp[] = INQUIRY.split("-");
-        String receiver = "02";
-        for(int i = 0; i < tmp.length; i++) {
-            receiver = receiver.concat(tmp[i]);
-        }
-        Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+ receiver));
-        startActivity(intent);
-    }
-
 }
