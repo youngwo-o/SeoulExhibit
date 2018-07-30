@@ -68,7 +68,7 @@ public class UserInfo {
     String getimage(){
         return this.image;
     }
-    DisplayInfo getDisplay(DisplayInfo tmp, String code){
+    /*DisplayInfo getDisplay(DisplayInfo tmp, String code){
         String tmpcode=null, tmpname=null, tmpstart=null, tmpend=null, tmpplace=null, tmpimage=null;
         boolean inname = false, instart = false, inend = false, inplace = false, inimage = false;
         String str_url = "http://openapi.seoul.go.kr:8088/766b79726868697336354e79574b51/xml/SearchConcertDetailService/1/5/"+code;
@@ -130,7 +130,7 @@ public class UserInfo {
         tmp = new DisplayInfo(tmpcode, tmpname, tmpstart, tmpend, tmpplace, tmpimage);
         return tmp;
     }
-
+*/
 /*
     String getLikeDis(int num) // "num"번째 좋아요 전시회의 정보를 리턴
     { //******Firebase에서 num번째 code를 String형태로 받아야함**********/////
