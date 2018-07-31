@@ -43,8 +43,8 @@ public class Home_View_Adapter extends RecyclerView.Adapter<Home_View_Adapter.Vi
     public void onBindViewHolder(ViewHolder holder, int position) {
         final Home_View_Item item=items.get(position);
         String adr = item.getImage();
-        Glide.with(context).load(adr).into(holder.image);
-     //   Glide.with(context).load(adr).apply(new RequestOptions().placeholder(R.mipmap.ic_launcher).centerCrop()).into(holder.image);
+     //   Glide.with(context).load(adr).into(holder.image);
+        Glide.with(context).load(adr).apply(new RequestOptions().placeholder(R.mipmap.ic_launcher).centerCrop()).into(holder.image);
         holder.title.setText(item.getTitle());
         holder.title.setTextColor(Color.BLACK);
         holder.date.setText(item.getDate());

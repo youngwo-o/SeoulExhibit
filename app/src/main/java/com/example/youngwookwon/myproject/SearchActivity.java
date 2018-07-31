@@ -1,43 +1,39 @@
 package com.example.youngwookwon.myproject;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * Created by user on 2018-07-09.
  */
 
-public class SearchActivity extends Activity {
-    private BottomNavigationView mBottomNavigation;
-    Intent intent;
-    protected void onCreate(Bundle savedInstanceState) {
+public class SearchActivity extends AppCompatActivity {
+    @BindView(R.id.search_toolbar)
+    Toolbar toolbar;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
-        mBottomNavigation = (BottomNavigationView) findViewById(R.id.a_search_bnv);
-        mBottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.action_Home:
-                        intent = new Intent(SearchActivity.this, MainActivity.class);
-                        //   intent.putExtra(“text”,String.valueOf(editText.getText()));
-                        startActivity(intent);
-                        return true;
-                    case R.id.action_Search:
-                        intent = new Intent(SearchActivity.this, SearchActivity.class);
-                        startActivity(intent);
-                        return true;
-                    case R.id.action_SNS:
-                        return true;
+        ButterKnife.bind(this);
 
-                    default:
-                        return false;
-                }
-            }
-        });
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

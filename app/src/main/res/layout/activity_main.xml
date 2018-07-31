@@ -18,15 +18,16 @@
             android:layout_height="match_parent">
 
             <ImageButton
-                android:id="@+id/left_button"
+                android:id="@+id/profile_button"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:onClick = "imgClick"/>
+                android:onClick="clickProfile"/>
 
             <ImageButton
-                android:id="@+id/right_button"
+                android:id="@+id/search_button"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
+                android:onClick="clickSearch"
                 android:layout_alignParentRight = "true"/>
 
             <ImageView

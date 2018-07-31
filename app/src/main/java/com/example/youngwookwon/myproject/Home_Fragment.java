@@ -26,7 +26,7 @@ public class Home_Fragment extends Fragment {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-
+    private int entry;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home_, container, false);
@@ -44,18 +44,19 @@ public class Home_Fragment extends Fragment {
         boolean inend = false;
         boolean inplace = false;
         boolean inimage = false;
-   //     ((MainActivity)getActivity()).changeText("이달의 전시");
+        //     ((MainActivity)getActivity()).changeText("이달의 전시");
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recyclerview2);
         mLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setAdapter(mAdapter);
 
+        DisplayInfo[] display = new DisplayInfo[40];
         List<Home_View_Item> items = new ArrayList<>();
-        Home_View_Item[] item = new Home_View_Item[20];
+        Home_View_Item[] item = new Home_View_Item[40];
         int i = 0;
         try {
-            URL url = new URL("http://openapi.seoul.go.kr:8088/46674359456869733835786b594d64/xml/SearchPerformanceBySubjectService/1/20/7/");
+            URL url = new URL("http://openapi.seoul.go.kr:8088/46674359456869733835786b594d64/xml/SearchPerformanceBySubjectService/1/40/7/");
             XmlPullParserFactory parserCreator = XmlPullParserFactory.newInstance();
             XmlPullParser parser = parserCreator.newPullParser();
             parser.setInput(url.openStream(), null);
@@ -118,7 +119,12 @@ public class Home_Fragment extends Fragment {
                     case XmlPullParser.END_TAG:
                         if (parser.getName().equals("row")) {
                             String tmp = "이름 : " + name + "\n기간 : " + start + "~" + end + "\n장소 : " + place + "";
-                            item[i] = new Home_View_Item(image," "+name," "+start+" ~ "+end, " "+place, code);
+                            if (name.contains("만들기")) break;
+                            if (name.contains("체험")) break;
+                            if (name.contains("교실")) break;
+                            if (name.contains("모집")) break;
+
+                            item[i] = new Home_View_Item(image, " " + name, " " + start + " ~ " + end, " " + place, code);
                             i++;
                         }
 
@@ -129,8 +135,14 @@ public class Home_Fragment extends Fragment {
         } catch (Exception e) {
 
         }
+
+        entry = i;
+        for (int j = 0; j < entry; j++) {
+            ((MainActivity) getActivity()).getDisplay(display[j], j);
+        }
+
         for (int j = 0; j < 20; j++) items.add(item[j]);
-        recyclerView.setAdapter(new Home_View_Adapter(getActivity(),items,R.layout.fragment_home_));
+        recyclerView.setAdapter(new Home_View_Adapter(getActivity(), items, R.layout.fragment_home_));
         return view;
     }
 }

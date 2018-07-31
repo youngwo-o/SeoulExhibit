@@ -6,7 +6,6 @@
     <!-- 로고 -->
     <item>
         <bitmap
-                android:gravity="center"
-                android:src="@drawable/mylove"/>
+                android:src="@drawable/logo"/>
     </item>
 </layer-list>

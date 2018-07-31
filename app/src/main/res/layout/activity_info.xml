@@ -16,7 +16,7 @@
             android:theme="?attr/actionBarTheme"
             android:minHeight="?attr/actionBarSize" android:id="@+id/info_toolbar">
         <Button
-                android:layout_width="50dp"
+                android:layout_width="60dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="right"
                 android:id="@+id/fav"
@@ -108,6 +108,7 @@
                                 android:orientation="vertical"
                                 android:layout_width="50dp"
                                 android:layout_height="match_parent"
+                                android:layout_marginLeft="10dp"
                                 android:layout_marginRight="2dp"
                                 android:gravity="center">
                             <Button
@@ -123,7 +124,7 @@
                                 android:orientation="vertical"
                                 android:layout_width="50dp"
                                 android:layout_height="match_parent"
-                                android:layout_marginLeft="2dp"
+                                android:layout_marginLeft="10dp"
                                 android:gravity="center">
                             <Button
                                     android:layout_width="match_parent"
@@ -235,7 +236,7 @@
                         </LinearLayout>
                         <Button
                                 android:layout_width="100dp"
-                                android:layout_height="30dp" android:src="@mipmap/ic_launcher"
+                                android:layout_height="50dp" android:src="@mipmap/ic_launcher"
                                 android:id="@+id/link"
                                 android:layout_marginTop="8dp"
                                 android:layout_marginBottom="8dp"
@@ -249,7 +250,8 @@
                     <Button
                             android:text="전화하기"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content" android:id="@+id/button9"/>
+                            android:layout_height="wrap_content" android:id="@+id/calling"
+                            android:layout_margin="5dp"/>
                 </RelativeLayout>
                 <TextView
                         android:text="리뷰가 보여질 곳"
