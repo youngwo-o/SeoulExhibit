@@ -6,6 +6,6 @@
     <!-- 로고 -->
     <item>
         <bitmap
-                android:src="@drawable/logo"/>
+                android:src="@drawable/loading"/>
     </item>
 </layer-list>
