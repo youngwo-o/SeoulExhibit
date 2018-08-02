@@ -1,5 +1,8 @@
 package com.example.youngwookwon.myproject;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
 
@@ -15,7 +18,7 @@ import java.net.URL;
  * DB child 이름 : 닉네임등으로 해야함
   * Firebase Database paths must not contain '.', '#', '$', '[', or ']')
 */
-public class UserInfo {
+public class UserInfo implements Parcelable {
     //firebase에서 받아온, 혹은 업데이트시 보내야할 사용자 정보
     private String Name; //사용자 이름
     private String ID; // 사용자 ID
@@ -23,7 +26,7 @@ public class UserInfo {
     private String nickname; // 닉네임, 변경시 보내야함
     private String image; //이미지 정보가 String 형태로.
    // String[] code = new String[20]; // 좋아요 누른 전시회 정보들이 여기에 들어감 최대 20개.
-    int entry; // 이건 좋아요 한 갯수!
+    private int entry; // 이건 좋아요 한 갯수!
     //DisplayInfo[] mydisplay = new DisplayInfo[20];
 
     public UserInfo() {}
@@ -34,6 +37,44 @@ public class UserInfo {
         this.ID = ID;
         this.password = password;
     }
+    /*
+        다음 액티비티로 UserInfo 객체를 넘겨줄 때 필요
+    */
+    protected UserInfo(Parcel in) {
+        Name = in.readString();
+        ID = in.readString();
+        password = in.readString();
+        nickname = in.readString();
+        image = in.readString();
+        entry = in.readInt();
+    }
+
+    public static final Creator<UserInfo> CREATOR = new Creator<UserInfo>() {
+        @Override
+        public UserInfo createFromParcel(Parcel in) {
+            return new UserInfo(in);
+        }
+
+        @Override
+        public UserInfo[] newArray(int size) {
+            return new UserInfo[size];
+        }
+    };
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(Name);
+        dest.writeString(ID);
+        dest.writeString(password);
+        dest.writeString(nickname);
+        dest.writeString(image);
+        dest.writeInt(entry);
+    }
+
     public void setName(String Name){this.Name = Name;}
     public void setEntry(int entry) {this.entry = entry;}
     /*
@@ -68,6 +109,9 @@ public class UserInfo {
     String getimage(){
         return this.image;
     }
+
+
+
     /*DisplayInfo getDisplay(DisplayInfo tmp, String code){
         String tmpcode=null, tmpname=null, tmpstart=null, tmpend=null, tmpplace=null, tmpimage=null;
         boolean inname = false, instart = false, inend = false, inplace = false, inimage = false;

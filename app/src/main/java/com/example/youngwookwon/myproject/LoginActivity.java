@@ -29,11 +29,15 @@ public class LoginActivity extends AppCompatActivity {
     private CallbackManager callbackManager;
     private EditText edit_Email;
     private EditText edit_PW;
+
+    private String userNickname;
+    private String userUID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        //Intent reg_intent = getIntent(); //이전 액티비티 받음
+        //userNickname = reg_intent.getStringExtra("userNickname");
         mAuth = FirebaseAuth.getInstance();
         //User State Listener
         mAuthListener = new FirebaseAuth.AuthStateListener() { //사용자의 로그인 상태 변화에 따라 이벤트 받음
@@ -41,15 +45,14 @@ public class LoginActivity extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) { //user is signed in
-                    Toast.makeText(LoginActivity.this, "Welcome! ", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Welcome! "+userNickname, Toast.LENGTH_SHORT).show();
+                    //UserInfo userInfo = (UserInfo)getIntent().getParcelableExtra("UserTestData");
                     Intent intent = new Intent(LoginActivity.this, UserInfoActivity.class);
                     startActivity(intent);
-                    // Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
                 }
-                /*else { //user is signed out
+                else { //user is signed out
                     Toast.makeText(LoginActivity.this, "Signed out", Toast.LENGTH_SHORT).show();
-                    // Log.d(TAG, "onAuthStateChanged:signed_out");
-                }*/
+                }
             }
         };
 
