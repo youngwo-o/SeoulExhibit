@@ -6,9 +6,13 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -32,10 +36,19 @@ public class LoginActivity extends AppCompatActivity {
 
     private String userNickname;
     private String userUID;
+
+    @BindView(R.id.button_fblogin)
+    LoginButton button_fblogin;
+    @BindView(R.id.fake_fb)
+    Button fake_fb;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        ButterKnife.bind(this);
+
         //Intent reg_intent = getIntent(); //이전 액티비티 받음
         //userNickname = reg_intent.getStringExtra("userNickname");
         mAuth = FirebaseAuth.getInstance();
@@ -163,4 +176,10 @@ public class LoginActivity extends AppCompatActivity {
         //Intent intent = new Intent(LoginActivity.this, ForgotActivity.class);
         //startActivity(intent);
     }
+
+    @OnClick(R.id.fake_fb)
+    public void login_fb(View v) {
+        button_fblogin.performClick(); //performClick 클릭을 실행하게 만들어 자동으로 실행되도록 한다.
+    }
+
 }
