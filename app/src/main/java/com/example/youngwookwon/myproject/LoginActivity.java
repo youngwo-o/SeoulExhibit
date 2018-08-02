@@ -6,18 +6,13 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
-import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -28,8 +23,6 @@ import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import java.util.Arrays;
-
 public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
@@ -37,18 +30,14 @@ public class LoginActivity extends AppCompatActivity {
     private EditText edit_Email;
     private EditText edit_PW;
 
-    @BindView(R.id.button_fblogin)
-    LoginButton button_fblogin;
-    @BindView(R.id.fake_fb)
-    Button fake_fb;
-
+    private String userNickname;
+    private String userUID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
-        ButterKnife.bind(this);
-
+        //Intent reg_intent = getIntent(); //이전 액티비티 받음
+        //userNickname = reg_intent.getStringExtra("userNickname");
         mAuth = FirebaseAuth.getInstance();
         //User State Listener
         mAuthListener = new FirebaseAuth.AuthStateListener() { //사용자의 로그인 상태 변화에 따라 이벤트 받음
@@ -56,15 +45,14 @@ public class LoginActivity extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) { //user is signed in
-                    Toast.makeText(LoginActivity.this, "Welcome! ", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Welcome! "+userNickname, Toast.LENGTH_SHORT).show();
+                    //UserInfo userInfo = (UserInfo)getIntent().getParcelableExtra("UserTestData");
                     Intent intent = new Intent(LoginActivity.this, UserInfoActivity.class);
                     startActivity(intent);
-                    // Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
                 }
-                /*else { //user is signed out
+                else { //user is signed out
                     Toast.makeText(LoginActivity.this, "Signed out", Toast.LENGTH_SHORT).show();
-                    // Log.d(TAG, "onAuthStateChanged:signed_out");
-                }*/
+                }
             }
         };
 
@@ -174,10 +162,5 @@ public class LoginActivity extends AppCompatActivity {
     public void click_forgot_pw(View view) {
         //Intent intent = new Intent(LoginActivity.this, ForgotActivity.class);
         //startActivity(intent);
-    }
-
-    @OnClick(R.id.fake_fb)
-    public void login_fb(View v) {
-        button_fblogin.performClick(); //performClick 클릭을 실행하게 만들어 자동으로 실행되도록 한다.
     }
 }
