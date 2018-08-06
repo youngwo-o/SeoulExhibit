@@ -23,12 +23,12 @@ public class UserInfo implements Serializable {
     //firebase에서 받아온, 혹은 업데이트시 보내야할 사용자 정보
     private String Name; //사용자 이름
     private String ID; // 사용자 ID
-    private String password;// 비번을 꼭 앱 실행시 저장해야하는가? 아직모르겠다 연선아 알아서판단해!!
+    private String password;
     private String nickname; // 닉네임, 변경시 보내야함
     private String image; //이미지 정보가 String 형태로.
    // String[] code = new String[20]; // 좋아요 누른 전시회 정보들이 여기에 들어감 최대 20개.
-    private int entry; // 이건 좋아요 한 갯수!
-    //DisplayInfo[] mydisplay = new DisplayInfo[20];
+    private int entry; //좋아요 한 갯수
+    // DisplayInfo[] mydisplay = new DisplayInfo[20];
 
     public UserInfo() {}
     public UserInfo(String Name, String nickname, String ID, String password)
@@ -40,24 +40,26 @@ public class UserInfo implements Serializable {
     }
 
     public void setName(String Name){this.Name = Name;}
+    public void setNickname(String Nickname) {this.nickname = Nickname;}
+    public void setId(String ID) {this.ID = ID;}
+    public void setPassword(String Password) {this.password = Password;}
     public void setEntry(int entry) {this.entry = entry;}
 
-    String getName(){
+    public String getName(){
       return this.Name;
     }
-    String getID(){
+    public String getId(){
         return this.ID;
     }
-    String getPassword(){
+    public String getPassword(){
         return this.password;
     }
-    String getnickname(){
+    public String getNickname(){
         return this.nickname;
     }
-    String getimage(){
+    public String getImage(){
         return this.image;
     }
-
 }
 /////////////***********************사용법***************************//////////
 /////객체 생성 : UserInfo user = new UserInfo(파싱한내용들); //entry는 좋아요누른횟수. 이것만큼 생성자에서 초기화가 이루어짐

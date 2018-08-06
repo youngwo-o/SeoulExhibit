@@ -49,8 +49,8 @@ public class UserInfoActivity extends Activity {
                     userInfo = dataSnapshot.getValue(UserInfo.class);
                     if(userInfo != null) {
                         name = userInfo.getName();
-                        nickname = userInfo.getnickname();
-                        photoURL = userInfo.getimage();
+                        nickname = userInfo.getNickname();
+                        photoURL = userInfo.getImage();
                         Toast.makeText(UserInfoActivity.this, name + "/" + email + "/", Toast.LENGTH_SHORT).show();
                     }
                 }
