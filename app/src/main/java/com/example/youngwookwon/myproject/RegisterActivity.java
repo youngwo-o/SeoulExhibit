@@ -70,8 +70,6 @@ public class RegisterActivity extends AppCompatActivity {
         mDatabase = FirebaseDatabase.getInstance().getReference();
         mDatabase.child("user").child(dbChild).setValue(user);
         Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-        //intent.putExtra("UserTestData", user);
-        //intent.putExtra("userNickname", user.getnickname());
         startActivity(intent);
         finish();
     }
