@@ -36,6 +36,8 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        //Intent reg_intent = getIntent(); //이전 액티비티 받음
+        //userNickname = reg_intent.getStringExtra("userNickname");
         mAuth = FirebaseAuth.getInstance();
         //User State Listener
         mAuthListener = new FirebaseAuth.AuthStateListener() { //사용자의 로그인 상태 변화에 따라 이벤트 받음
