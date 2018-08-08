@@ -79,6 +79,7 @@ public class UserInfoActivity extends Activity {
         LoginManager.getInstance().logOut();
         Intent intent = new Intent(UserInfoActivity.this, MainActivity.class);
         startActivity(intent);
+        finish();
         Toast.makeText(UserInfoActivity.this, "로그아웃 되었습니다.", Toast.LENGTH_SHORT).show();
     }
 }

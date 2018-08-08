@@ -1,6 +1,5 @@
 package com.example.youngwookwon.myproject;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Keep;
@@ -12,10 +11,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 @Keep
@@ -61,6 +60,11 @@ public class RegisterActivity extends AppCompatActivity {
                             Toast.makeText(RegisterActivity.this, "가입되었습니다", Toast.LENGTH_SHORT).show();
                         }
                     }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(RegisterActivity.this, e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
+                    }
                 });
             }
             else {
@@ -70,6 +74,7 @@ public class RegisterActivity extends AppCompatActivity {
         user = new UserInfo(Name, Nickname, Email, PW);
         mDatabase = FirebaseDatabase.getInstance().getReference();
         mDatabase.child("user").child(dbChild).setValue(user);
+
         Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
         startActivity(intent);
         finish();
