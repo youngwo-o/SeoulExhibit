@@ -68,37 +68,25 @@
                         android:layout_height="match_parent"
                         android:orientation="vertical">
 
-                        <RelativeLayout
+                        <TextView
+                            android:id="@+id/textView_nickname"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1">
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textSize="30sp" />
+                        <TextView
+                            android:id="@+id/textView_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textSize="15sp" />
 
-                            <TextView
-                                android:id="@+id/edit_nickname"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="temp"
-                                android:textSize="30dp" />
-
-                            <TextView
-                                android:id="@+id/user_name"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="temp"
-                                android:textSize="15dp" />
-
-                            <TextView
-                                android:id="@+id/edit_email"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@id/user_name"
-                                android:layout_weight="1"
-                                android:text="temp@temp"
-                                android:textSize="15dp" />
-
-                        </RelativeLayout>
+                        <TextView
+                            android:id="@+id/textView_Email"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textSize="15sp" />
 
                     </LinearLayout>
 

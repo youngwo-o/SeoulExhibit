@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.login.LoginManager;
@@ -18,6 +19,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import org.w3c.dom.Text;
 
 
 public class UserInfoActivity extends Activity {
@@ -51,6 +54,12 @@ public class UserInfoActivity extends Activity {
                         name = userInfo.getName();
                         nickname = userInfo.getNickname();
                         photoURL = userInfo.getImage();
+                        TextView textView_nickname = (TextView)findViewById(R.id.textView_nickname);
+                        TextView textView_name = (TextView)findViewById(R.id.textView_name);
+                        TextView textView_email = (TextView)findViewById(R.id.textView_Email);
+                        textView_nickname.setText(nickname);
+                        textView_name.setText(name);
+                        textView_email.setText(email);
                         Toast.makeText(UserInfoActivity.this, name + "/" + email + "/", Toast.LENGTH_SHORT).show();
                     }
                 }
@@ -79,7 +88,7 @@ public class UserInfoActivity extends Activity {
         LoginManager.getInstance().logOut();
         Intent intent = new Intent(UserInfoActivity.this, MainActivity.class);
         startActivity(intent);
-        finish();
+        //finish();
         Toast.makeText(UserInfoActivity.this, "로그아웃 되었습니다.", Toast.LENGTH_SHORT).show();
     }
 }
