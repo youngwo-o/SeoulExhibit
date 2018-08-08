@@ -77,7 +77,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
         startActivity(intent);
-        finish();
+        //finish();
     }
     private boolean isEmptyEditText() {
         edit_Name = findViewById(R.id.edit_Name);
