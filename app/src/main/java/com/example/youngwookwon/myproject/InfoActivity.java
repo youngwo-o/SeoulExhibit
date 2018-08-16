@@ -5,6 +5,7 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -12,6 +13,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -29,6 +40,9 @@ public class InfoActivity extends AppCompatActivity  {
     String INQUIRY = null;
     List<Address> list = null;
 
+    DisplayReview Review;
+    String dbChild;
+
     @BindView(R.id.link)
     Button link;
     @BindView(R.id.showmap)
@@ -37,6 +51,8 @@ public class InfoActivity extends AppCompatActivity  {
     Button calling;
     @BindView(R.id.info_toolbar)
     Toolbar toolbar;
+    @BindView(R.id.button_review)
+    Button button_review;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -217,5 +233,47 @@ public class InfoActivity extends AppCompatActivity  {
             receiver = receiver + tmp[i];
         }
         startActivity(new Intent("android.intent.action.DIAL", Uri.parse("tel:"+receiver)));
+    }
+
+    /*
+    임시))) 리뷰 쓴 경우 전시회 데이터베이스에 사용자 아이디 저장됨
+     */
+    @OnClick(R.id.button_review)
+    public void click_review() {
+        Intent intent = getIntent();
+        final String cultcode = intent.getExtras().getString("cultcode");
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        final DatabaseReference databaseReference;
+        if (user != null) {
+            dbChild = user.getEmail().substring(0, user.getEmail().indexOf("@"));
+        }
+        else {
+            Toast.makeText(InfoActivity.this, "로그인 후 리뷰 쓰기가 가능합니다", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        databaseReference = FirebaseDatabase.getInstance().getReference("review").child(cultcode);
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Toast.makeText(InfoActivity.this, cultcode, Toast.LENGTH_SHORT).show();
+                //해당 전시회에 대한 리뷰가 있는 경우
+                if (dataSnapshot.hasChild(dbChild)) {
+                    Toast.makeText(InfoActivity.this, "이미 리뷰를 작성하였습니다.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                //아직 리뷰가 없는 경우
+                else {
+                    Toast.makeText(InfoActivity.this, "----------REVIEW222----------", Toast.LENGTH_SHORT).show();
+                    databaseReference.child(dbChild).setValue("날짜"); //사용자 아이디 : 작성시간
+                    //databaseReference.child(dbChild).push().setValue("리뷰뷰뷰");
+                    UserReview saveReview = new UserReview(cultcode, "리뷰뷰");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 }

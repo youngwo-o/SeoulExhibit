@@ -98,7 +98,4 @@ public class MainActivity extends AppCompatActivity {
     {
         this.display[count] = display;
     }
-
-
-
 }

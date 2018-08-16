@@ -26,7 +26,6 @@ import org.w3c.dom.Text;
 public class UserInfoActivity extends Activity {
     private FirebaseAuth mAuth;
     private DatabaseReference databaseReference;
-    private FirebaseDatabase firebaseDatabase;
     private String dbChild;
     private UserInfo userInfo;
     private String uid;
@@ -70,8 +69,6 @@ public class UserInfoActivity extends Activity {
             });
 
         }
-
-
         ImageView naeunimage = (ImageView)findViewById(R.id.naeun);
         naeunimage.setImageResource(R.drawable.mylove);
     }
@@ -90,5 +87,8 @@ public class UserInfoActivity extends Activity {
         startActivity(intent);
         //finish();
         Toast.makeText(UserInfoActivity.this, "로그아웃 되었습니다.", Toast.LENGTH_SHORT).show();
+    }
+
+    public void click_changeInfo(View view) {
     }
 }

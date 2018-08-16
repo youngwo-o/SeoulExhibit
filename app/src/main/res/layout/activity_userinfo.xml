@@ -106,12 +106,12 @@
                 android:orientation="vertical">
 
                 <Button
-                    android:id="@+id/button_modUserInfo"
+                    android:id="@+id/button_chngeInfo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="left"
                     android:text="TEMP_회원정보수정하기"
-                    android:onClick="click_modUserInfo"/>
+                    android:onClick="click_changeInfo"/>
 
                 <Button
                     android:id="@+id/button_signout"
