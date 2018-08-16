@@ -123,6 +123,8 @@ public class Home_Fragment extends Fragment {
                             if (name.contains("체험")) break;
                             if (name.contains("교실")) break;
                             if (name.contains("모집")) break;
+                            if (name.contains("교육")) break;
+                            if (name.contains("도서관")) break;
 
                             item[i] = new Home_View_Item(image, " " + name, " " + start + " ~ " + end, " " + place, code);
                             i++;

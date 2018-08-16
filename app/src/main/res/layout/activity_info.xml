@@ -17,7 +17,7 @@
             android:minHeight="?attr/actionBarSize" android:id="@+id/info_toolbar">
         <Button
                 android:layout_width="60dp"
-                android:layout_height="match_parent"
+                android:layout_height="60dp"
                 android:layout_gravity="right"
                 android:id="@+id/fav"
         />
@@ -29,8 +29,7 @@
             <LinearLayout
                     android:orientation="vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/edge_bottom">
+                    android:layout_height="wrap_content">
 
                 <HorizontalScrollView android:layout_width="match_parent"
                                       android:layout_height="150dp"
@@ -247,18 +246,41 @@
 
                     </LinearLayout>
                 </RelativeLayout>
-                <RelativeLayout android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
                     <Button
-                            android:text="전화하기"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content" android:id="@+id/calling"
-                            android:layout_margin="5dp"/>
-                </RelativeLayout>
-                <TextView
-                        android:text="리뷰가 보여질 곳"
+                        android:id="@+id/calling"
                         android:layout_width="match_parent"
-                        android:layout_height="200dp" android:id="@+id/textView"/>
+                        android:layout_height="60dp"
+                        android:layout_margin="5dp"
+                        android:background="@drawable/calling_button"
+                        style="?android:attr/borderlessButtonStyle"
+                        android:text="전화하기" />
+                </RelativeLayout>
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="#dcdcdc">
+                    <TextView
+                            android:text="주요 리뷰"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="20dp"
+                            android:id="@+id/textView"
+                            android:textSize="17sp"
+                            android:textStyle="bold"
+                            android:gravity="center_horizontal" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="20dp"
+                        android:text="reviewreviewreviewreviewreviewreviewreviewreviewreviewreviewreviewreview"
+                        android:background="@color/colorWhite" />
+
+                </LinearLayout>
 
             </LinearLayout>
         </ScrollView>

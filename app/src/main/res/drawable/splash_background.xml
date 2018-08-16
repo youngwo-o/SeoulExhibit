@@ -2,10 +2,5 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- 배경 -->
     <item
-            android:drawable="@color/colorWhite"/>
-    <!-- 로고 -->
-    <item>
-        <bitmap
-                android:src="@drawable/loading"/>
-    </item>
+            android:drawable="@drawable/splash"/>
 </layer-list>
