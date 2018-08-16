@@ -40,7 +40,6 @@ public class InfoActivity extends AppCompatActivity  {
     String INQUIRY = null;
     List<Address> list = null;
 
-    DisplayReview Review;
     String dbChild;
 
     @BindView(R.id.link)
@@ -251,6 +250,9 @@ public class InfoActivity extends AppCompatActivity  {
             Toast.makeText(InfoActivity.this, "로그인 후 리뷰 쓰기가 가능합니다", Toast.LENGTH_SHORT).show();
             return;
         }
+        Intent review_intent = new Intent(InfoActivity.this, ReviewWriteActivity.class);
+        startActivity(review_intent);
+        /*
         databaseReference = FirebaseDatabase.getInstance().getReference("review").child(cultcode);
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -261,19 +263,19 @@ public class InfoActivity extends AppCompatActivity  {
                     Toast.makeText(InfoActivity.this, "이미 리뷰를 작성하였습니다.", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                //아직 리뷰가 없는 경우
+                //전시회 리뷰 작성
                 else {
-                    Toast.makeText(InfoActivity.this, "----------REVIEW222----------", Toast.LENGTH_SHORT).show();
+
                     databaseReference.child(dbChild).setValue("날짜"); //사용자 아이디 : 작성시간
-                    //databaseReference.child(dbChild).push().setValue("리뷰뷰뷰");
-                    UserReview saveReview = new UserReview(cultcode, "리뷰뷰");
+                    UserReview userReview = new UserReview(cultcode, "리뷰뷰");
+                    userReview.saveReview("리뷰뷰");
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
             }
         });
+        */
     }
 }

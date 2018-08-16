@@ -19,7 +19,6 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-
         <meta-data
                 android:name="com.google.android.geo.API_KEY"
                 android:value="AIzaSyDt3pa9Co045THpuSLQ8oRpOX4x4nWD2dM" />
@@ -67,6 +66,9 @@
         <activity
                 android:name=".MapsActivity"
                 android:label="@string/title_activity_maps"></activity>
+        <activity android:name=".ReviewWriteActivity"
+            android:label="리뷰 작성"
+            android:theme="@style/Theme.AppCompat"/>
     </application>
 
 </manifest>

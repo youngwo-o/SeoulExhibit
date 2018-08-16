@@ -256,7 +256,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
                         android:layout_margin="5dp"
-                        android:background="@drawable/calling_button"
                         style="?android:attr/borderlessButtonStyle"
                         android:text="전화하기" />
                 </RelativeLayout>

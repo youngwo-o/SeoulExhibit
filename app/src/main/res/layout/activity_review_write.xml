@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="150dp"
+    android:layout_marginTop="150dp">
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <EditText
+            android:id="@+id/edit_review"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:ems="10"
+            android:hint="리뷰 작성"
+            android:inputType="textLongMessage" />
+
+        <Button
+            android:id="@+id/Review"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:onClick="write_review"
+            android:text="리뷰 등록" />
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
