@@ -235,6 +235,7 @@ public class InfoActivity extends AppCompatActivity  {
     }
 
     /*
+    리뷰쓰기 버튼 누른 경우
     임시))) 리뷰 쓴 경우 전시회 데이터베이스에 사용자 아이디 저장됨
      */
     @OnClick(R.id.button_review)
@@ -250,9 +251,7 @@ public class InfoActivity extends AppCompatActivity  {
             Toast.makeText(InfoActivity.this, "로그인 후 리뷰 쓰기가 가능합니다", Toast.LENGTH_SHORT).show();
             return;
         }
-        Intent review_intent = new Intent(InfoActivity.this, ReviewWriteActivity.class);
-        startActivity(review_intent);
-        /*
+
         databaseReference = FirebaseDatabase.getInstance().getReference("review").child(cultcode);
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -265,10 +264,9 @@ public class InfoActivity extends AppCompatActivity  {
                 }
                 //전시회 리뷰 작성
                 else {
-
-                    databaseReference.child(dbChild).setValue("날짜"); //사용자 아이디 : 작성시간
-                    UserReview userReview = new UserReview(cultcode, "리뷰뷰");
-                    userReview.saveReview("리뷰뷰");
+                    Intent intent_review = new Intent(InfoActivity.this, ReviewWriteActivity.class);
+                    intent_review.putExtra("cultcode", cultcode);
+                    startActivity(intent_review);
                 }
             }
 
@@ -276,6 +274,5 @@ public class InfoActivity extends AppCompatActivity  {
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
-        */
     }
 }

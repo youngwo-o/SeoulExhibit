@@ -21,15 +21,14 @@
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:ems="10"
-            android:hint="리뷰 작성"
+            android:hint="흥미로웠습니다!"
             android:inputType="textLongMessage" />
 
         <Button
-            android:id="@+id/Review"
+            android:id="@+id/button_review"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:onClick="write_review"
             android:text="리뷰 등록" />
 
     </LinearLayout>

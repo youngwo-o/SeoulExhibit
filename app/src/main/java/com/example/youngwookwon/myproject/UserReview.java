@@ -11,9 +11,7 @@ public class UserReview {
     String dbChild = user.getEmail().substring(0, user.getEmail().indexOf("@"));
     DatabaseReference databaseReference;
 
-    public UserReview(String cultcode, String review) {
-        this.setCultcode(cultcode);
-    }
+    public UserReview() {}
     void setCultcode(String cultcode) {
         this.cultcode = cultcode;
     }
