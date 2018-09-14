@@ -22,7 +22,9 @@ import com.google.firebase.database.ValueEventListener;
 
 import org.w3c.dom.Text;
 
-
+/*
+회원정보(마이페이지)
+ */
 public class UserInfoActivity extends Activity {
     private FirebaseAuth mAuth;
     private DatabaseReference databaseReference;

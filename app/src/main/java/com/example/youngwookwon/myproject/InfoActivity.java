@@ -26,22 +26,29 @@ import com.google.firebase.database.ValueEventListener;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+
+import org.w3c.dom.Text;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class InfoActivity extends AppCompatActivity  {
+    String cultcode = null;
     String TITLE = null;
     String ORG_LINK=null;
     String PLACE = null;
     String INQUIRY = null;
     List<Address> list = null;
-
+    ArrayList<HashMap<String, String>> mArrayList = new ArrayList<>();
     String dbChild;
 
+    String review;
+    int review_cnt;
     @BindView(R.id.link)
     Button link;
     @BindView(R.id.showmap)
@@ -64,13 +71,15 @@ public class InfoActivity extends AppCompatActivity  {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         getData();
+        showReview();
     }
 
     private void getData() {
         Intent intent = getIntent();
+        cultcode = intent.getExtras().getString("cultcode");
         String TIME=null, DATE=null, STARTDATE=null, END_DATE=null, USE_TRGT=null, USE_FEE = null;
         boolean intitle = false, intime = false, indate = false, instartdate = false,inend_date = false, inplace = false, inorg_link = false, inuse_trgt = false, inuse_fee = false, ininquiry = false;
-        String str_url = "http://openapi.seoul.go.kr:8088/766b79726868697336354e79574b51/xml/SearchConcertDetailService/1/5/"+intent.getExtras().getString("cultcode");
+        String str_url = "http://openapi.seoul.go.kr:8088/766b79726868697336354e79574b51/xml/SearchConcertDetailService/1/5/"+cultcode;
 
         try {
             URL url = new URL(str_url);
@@ -234,14 +243,63 @@ public class InfoActivity extends AppCompatActivity  {
         startActivity(new Intent("android.intent.action.DIAL", Uri.parse("tel:"+receiver)));
     }
 
+    public void showReview() {
+        final DatabaseReference databaseReference;
+        review_cnt = 0;
+        final TextView textView_review = (TextView)findViewById(R.id.text_review);
+        databaseReference = FirebaseDatabase.getInstance().getReference("review").child(cultcode);
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot reviewSnapshot: dataSnapshot.getChildren()) {
+                    final String id = reviewSnapshot.getKey();
+                    HashMap<String, String> hashMap = new HashMap<>();
+                    GetReview getReview = new GetReview(id, cultcode);
+                    /*DatabaseReference review_databaseReference = FirebaseDatabase.getInstance().getReference("user").child(id).child(cultcode);
+                    review_databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            if(dataSnapshot.getValue() != null) {
+                                review = dataSnapshot.getValue().toString();
+
+                            }
+                            else {
+                            }
+                        }
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+                        }
+
+                    });*/
+                    review = getReview.getreview();
+                    hashMap.put("id", id);
+                    hashMap.put("review", review);
+                    //Toast.makeText(InfoActivity.this, getReview.getreview(), Toast.LENGTH_SHORT).show();
+                    mArrayList.add(hashMap);
+                   review_cnt++;
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+        for(int i=0; i <review_cnt; i++) {
+            Toast.makeText(InfoActivity.this, i, Toast.LENGTH_SHORT).show();
+            HashMap<String, String> outputHashMap = mArrayList.get(i);
+            String id = outputHashMap.get("id");
+            review = outputHashMap.get("review");
+            Toast.makeText(InfoActivity.this, i +id+ review, Toast.LENGTH_SHORT).show();
+            String id_review = String.format(getResources().getString(R.string.textview_review), id, review);
+            textView_review.append(id_review);
+        }
+    }
     /*
     리뷰쓰기 버튼 누른 경우
-    임시))) 리뷰 쓴 경우 전시회 데이터베이스에 사용자 아이디 저장됨
      */
     @OnClick(R.id.button_review)
     public void click_review() {
-        Intent intent = getIntent();
-        final String cultcode = intent.getExtras().getString("cultcode");
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         final DatabaseReference databaseReference;
         if (user != null) {

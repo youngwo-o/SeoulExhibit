@@ -133,7 +133,7 @@
                             <TextView
                                 android:text="리뷰쓰기"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content" android:id="@+id/review"
+                                android:layout_height="wrap_content"
                                 android:textSize="12dp" />
                         </LinearLayout>
                     </LinearLayout>
@@ -272,12 +272,14 @@
                             android:textSize="17sp"
                             android:textStyle="bold"
                             android:gravity="center_horizontal" />
+
                     <TextView
+                        android:id="@+id/text_review"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="20dp"
-                        android:text="reviewreviewreviewreviewreviewreviewreviewreviewreviewreviewreviewreview"
-                        android:background="@color/colorWhite" />
+                        android:background="@color/colorWhite"
+                        />
 
                 </LinearLayout>
 
