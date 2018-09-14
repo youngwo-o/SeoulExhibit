@@ -47,6 +47,7 @@ public class InfoActivity extends AppCompatActivity  {
     ArrayList<HashMap<String, String>> mArrayList = new ArrayList<>();
     String dbChild;
 
+    String id_review; //최종 리뷰 형식
     String review;
     int review_cnt;
     @BindView(R.id.link)
@@ -253,15 +254,17 @@ public class InfoActivity extends AppCompatActivity  {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot reviewSnapshot: dataSnapshot.getChildren()) {
                     final String id = reviewSnapshot.getKey();
-                    HashMap<String, String> hashMap = new HashMap<>();
-                    GetReview getReview = new GetReview(id, cultcode);
-                    /*DatabaseReference review_databaseReference = FirebaseDatabase.getInstance().getReference("user").child(id).child(cultcode);
+                    //HashMap<String, String> hashMap = new HashMap<>();
+                   // GetReview getReview = new GetReview(id, cultcode);
+                    DatabaseReference review_databaseReference = FirebaseDatabase.getInstance().getReference("user").child(id).child(cultcode);
                     review_databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             if(dataSnapshot.getValue() != null) {
                                 review = dataSnapshot.getValue().toString();
-
+                                id_review = String.format(getResources().getString(R.string.textview_review), id, review);
+                                Toast.makeText(InfoActivity.this, id_review, Toast.LENGTH_SHORT).show();
+                                textView_review.append(id_review);
                             }
                             else {
                             }
@@ -270,13 +273,15 @@ public class InfoActivity extends AppCompatActivity  {
                         public void onCancelled(@NonNull DatabaseError databaseError) {
                         }
 
-                    });*/
-                    review = getReview.getreview();
-                    hashMap.put("id", id);
-                    hashMap.put("review", review);
+                    });
+                    //review = getReview.getreview();
+                   // hashMap.put("id", id);
+                    //hashMap.put("review", review);
                     //Toast.makeText(InfoActivity.this, getReview.getreview(), Toast.LENGTH_SHORT).show();
-                    mArrayList.add(hashMap);
-                   review_cnt++;
+                    //mArrayList.add(hashMap);
+
+                    //review_cnt++;
+                    //Toast.makeText(InfoActivity.this, review_cnt, Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -285,15 +290,13 @@ public class InfoActivity extends AppCompatActivity  {
 
             }
         });
-        for(int i=0; i <review_cnt; i++) {
-            Toast.makeText(InfoActivity.this, i, Toast.LENGTH_SHORT).show();
+        /*for(int i=0; i <review_cnt; i++) {
             HashMap<String, String> outputHashMap = mArrayList.get(i);
             String id = outputHashMap.get("id");
             review = outputHashMap.get("review");
-            Toast.makeText(InfoActivity.this, i +id+ review, Toast.LENGTH_SHORT).show();
             String id_review = String.format(getResources().getString(R.string.textview_review), id, review);
-            textView_review.append(id_review);
-        }
+        }*/
+
     }
     /*
     리뷰쓰기 버튼 누른 경우
